@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <title>探索課程</title>
+    <style>
+      /* 自動顯示類別名稱樣式 */
+      #category {
+        font-size: 20px;
+      }
+      /* 類別相片樣式 */
+      #categoryPhoto {
+        width: 250px;
+      }
+      /* 大類別樣式 */
+      .bigC {
+        font-size: 25px;
+        border: 1px solid black;
+      }
+      /* 小類別樣式 */
+      .smallC {
+        font-size: 20px;
+        /* border: 1px solid black; */
+        display: flex;
+        flex-wrap: wrap; /* 允許換行 */
+        gap: 10px; /* 選項之間的間距 */
+      }
+      .smallCLink {
+        flex-basis: calc(100% / 6 - 10px); /* 每個項目的寬度，使得一行六個 */
+        text-align: center; /* 讓文字居中 */
+        display: inline-block; /* 根據內容寬度調整 */
+        padding: 5px 10px; /* 內邊距 */
+        border: 1px solid #dee2e6; /* 邊框 */
+        text-align: center;
+        white-space: nowrap; /* 防止文字換行 */
+        box-sizing: border-box;
+      }
+
+      .smallCLink:hover {
+        background-color: #f0f0f0; /* 添加滑過效果 */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-5">
+        探索課程
+        <!-- 自動顯示類別名稱 -->
+        <span id="category" class="ms-3">全部</span>
+      </h1>
+      <!-- 選擇類別區、圖片 -->
+      <div class="mt-5 row justify-content-between">
+        <!-- 大類別 -->
+        <div class="row col-7 bigC p-5">
+          <a href="" class="col">全部</a>
+          <a href="" class="col">生活</a>
+          <a href="" class="col">音樂</a>
+          <a href="" class="col">商業</a>
+          <a href="" class="col">語言</a>
+          <!-- 小類別，根據資料庫大類別中的小類別自動顯示 -->
+          <div class="row p-3 smallC">
+            <a href="" class="smallCLink">全部</a>
+            <a href="" class="smallCLink">生活</a>
+            <a href="" class="smallCLink">音樂</a>
+            <a href="" class="smallCLink">音樂</a>
+            <a href="" class="smallCLink">音樂</a>
+            <a href="" class="smallCLink">音樂</a>
+            <a href="" class="smallCLink">手工課程</a>
+          </div>
+        </div>
+        <!-- 圖片區，可能會根據不同大類別換圖片-->
+        <img id="categoryPhoto" src="../photo/圖片一.png" class="col-4" />
+      </div>
+      <hr />
+      <!-- 篩選區下拉選單，根據選擇課程類別篩選 -->
+      <div class="btn-group">
+        <!-- 此按鈕應跟著篩選選項做改變 -->
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          篩選
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><a class="dropdown-item" href="#">最新課程</a></li>
+          <li><a class="dropdown-item" href="#">最高人氣</a></li>
+          <li><a class="dropdown-item" href="#">最低價格</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="../js/bootstrap.bundle.js"></script>
+  </body>
+</html>

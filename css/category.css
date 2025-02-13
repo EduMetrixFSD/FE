@@ -1,0 +1,37 @@
+/* 類別相片樣式 */
+#categoryPhoto {
+  width: 400px;
+}
+
+#category {
+  font-size: 20px;
+}
+/* 大類別樣式 */
+.bigC {
+  font-size: 25px;
+  border: 1px solid black;
+}
+/* 小類別樣式 */
+.smallC {
+  font-size: 20px;
+  /* border: 1px solid black; */
+  display: flex;
+  flex-wrap: wrap; /* 允許換行 */
+  gap: 10px; /* 選項之間的間距 */
+}
+.smallCLink {
+  flex-basis: calc(100% / 6 - 10px); /* 每個項目的寬度，使得一行六個 */
+  text-align: center; /* 讓文字居中 */
+  display: inline-block; /* 根據內容寬度調整 */
+  padding: 5px 10px; /* 內邊距 */
+  border: 1px solid #dee2e6; /* 邊框 */
+  text-align: center;
+  white-space: nowrap; /* 防止文字換行 */
+  box-sizing: border-box;
+}
+
+.smallCLink:hover {
+  background-color: #f0f0f0; /* 添加滑過效果 */
+}
+
+/* 隱藏類別選單 */

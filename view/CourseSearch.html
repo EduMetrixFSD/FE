@@ -12,7 +12,7 @@
       }
       /* 類別相片樣式 */
       #categoryPhoto {
-        width: 250px;
+        width: 300px;
       }
       /* 大類別樣式 */
       .bigC {
@@ -45,22 +45,22 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="mt-5">
+      <h1 class="border">
         探索課程
         <!-- 自動顯示類別名稱 -->
-        <span id="category" class="ms-3">全部</span>
+        <span id="category" class="border">全部</span>
       </h1>
       <!-- 選擇類別區、圖片 -->
-      <div class="mt-5 row justify-content-between">
+      <div class="row justify-content-between border">
         <!-- 大類別 -->
-        <div class="row col-7 bigC p-5">
+        <div class="row col-7 bigC border">
           <a href="" class="col">全部</a>
           <a href="" class="col">生活</a>
           <a href="" class="col">音樂</a>
           <a href="" class="col">商業</a>
           <a href="" class="col">語言</a>
-          <!-- 小類別，根據資料庫大類別中的小類別自動顯示 -->
-          <div class="row p-3 smallC">
+          <!-- 小類別，根據資料庫大類別中的小類別自動生成 -->
+          <div class="row smallC border">
             <a href="" class="smallCLink">全部</a>
             <a href="" class="smallCLink">生活</a>
             <a href="" class="smallCLink">音樂</a>
@@ -71,7 +71,11 @@
           </div>
         </div>
         <!-- 圖片區，可能會根據不同大類別換圖片-->
-        <img id="categoryPhoto" src="../photo/圖片一.png" class="col-4" />
+        <img
+          id="categoryPhoto"
+          src="../photo/圖片一.png"
+          class="col-4 border"
+        />
       </div>
       <hr />
       <!-- 篩選區下拉選單，根據選擇課程類別篩選 -->
@@ -91,6 +95,116 @@
           <li><a class="dropdown-item" href="#">最高人氣</a></li>
           <li><a class="dropdown-item" href="#">最低價格</a></li>
         </ul>
+      </div>
+      <!-- 課程卡片，課程圖片、課程名稱、講師名字、評分、時長、價格 -->
+      <!-- 大螢幕時為4張卡片，螢幕變小變為2、1-->
+      <!-- 變1時轉為橫列非卡片顯示，怎麼做? -->
+      <!-- 先設框線，記得刪掉 -->
+      <div
+        class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-4 g-4 border"
+      >
+        <!-- 課程卡片1 -->
+        <div class="col border">
+          <div>
+            <img src="../photo/圖片一.png" class="card-img-top img-fluid" />
+            <div class="card-body">
+              <strong>
+                <h5 class="card-title">侑美與夢魘繪師</h5>
+              </strong>
+              <a class="card-body" href="./作者頁面/布蘭登.山德森.html">
+                布蘭登．山德森</a
+              ><br />
+              <a class="card-body" href="./出版社頁面/奇幻基地.html">
+                奇幻基地</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- 課程卡片2 -->
+        <div class="col border">
+          <div>
+            <img src="../photo/圖片一.png" class="card-img-top img-fluid" />
+            <div class="card-body">
+              <strong>
+                <h5 class="card-title">侑美與夢魘繪師</h5>
+              </strong>
+              <a class="card-body" href="./作者頁面/布蘭登.山德森.html">
+                布蘭登．山德森</a
+              ><br />
+              <a class="card-body" href="./出版社頁面/奇幻基地.html">
+                奇幻基地</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- 課程卡片3 -->
+        <div class="col border">
+          <div>
+            <img src="../photo/圖片一.png" class="card-img-top img-fluid" />
+            <div class="card-body">
+              <strong>
+                <h5 class="card-title">侑美與夢魘繪師</h5>
+              </strong>
+              <a class="card-body" href="./作者頁面/布蘭登.山德森.html">
+                布蘭登．山德森</a
+              ><br />
+              <a class="card-body" href="./出版社頁面/奇幻基地.html">
+                奇幻基地</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- 課程卡片4 -->
+        <div class="col border">
+          <div>
+            <img src="../photo/圖片一.png" class="card-img-top img-fluid" />
+            <div class="card-body">
+              <strong>
+                <h5 class="card-title">侑美與夢魘繪師</h5>
+              </strong>
+              <a class="card-body" href="./作者頁面/布蘭登.山德森.html">
+                布蘭登．山德森</a
+              ><br />
+              <a class="card-body" href="./出版社頁面/奇幻基地.html">
+                奇幻基地</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- 課程卡片5 -->
+        <div class="col border">
+          <div>
+            <img src="../photo/圖片一.png" class="card-img-top img-fluid" />
+            <div class="card-body">
+              <strong>
+                <h5 class="card-title">侑美與夢魘繪師</h5>
+              </strong>
+              <a class="card-body" href="./作者頁面/布蘭登.山德森.html">
+                布蘭登．山德森</a
+              ><br />
+              <a class="card-body" href="./出版社頁面/奇幻基地.html">
+                奇幻基地</a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- 課程卡片6 -->
+        <div class="col border">
+          <div>
+            <img src="../photo/圖片一.png" class="card-img-top img-fluid" />
+            <div class="card-body">
+              <strong>
+                <h5 class="card-title">侑美與夢魘繪師</h5>
+              </strong>
+              <a class="card-body" href="./作者頁面/布蘭登.山德森.html">
+                布蘭登．山德森</a
+              ><br />
+              <a class="card-body" href="./出版社頁面/奇幻基地.html">
+                奇幻基地</a
+              >
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

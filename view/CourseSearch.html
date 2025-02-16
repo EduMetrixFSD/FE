@@ -203,7 +203,8 @@
         </div>
       </div>
     </div>
-
+    <!-- footer -->
+    <div id="footer-container"></div>
     <script src="../js/bootstrap.bundle.js"></script>
     <script>
       // 使用 JavaScript 動態載入navbar.html
@@ -211,6 +212,12 @@
         .then((response) => response.text())
         .then((data) => {
           document.getElementById("navbar-container").innerHTML = data;
+        });
+      // 使用 JavaScript 動態載入footer.html
+      fetch("../plug/footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer-container").innerHTML = data;
         });
     </script>
   </body>

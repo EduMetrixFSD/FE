@@ -158,7 +158,7 @@
           <img src="../photo/5d9d5d36421a860021dc4534.avif" alt="" />
         </div>
         <!-- 章節 -->
-         <div class="tab-pane active m-5" id="chapter" role="tabpanel">
+         <div class="tab-pane m-5" id="chapter" role="tabpanel">
           <div class="container">
             <div class="accordion" id="accordionExample">
               <div class="accordion-item">
@@ -431,8 +431,6 @@
                 </div>
               </div>
             </div>
-
-             <!-- 提問時間 -->
           </div>
         </div>
         <!-- 公告區 -->
@@ -488,10 +486,26 @@
         <div class="tab-pane m-5" id="settings" role="tabpanel">
           <h4>課程評價</h4>
           <pre><h4><span style="font-size: 50px;">4.9</span>/ 5.0★★★★★</h4><span>34 則評價</span></pre>
-          
+          <div class="row border p-4">
+            <!-- 提問者頭貼 -->
+            <img
+              src="../photo/圖片一.png"
+              class="rounded-circle me-3 col-1"
+              style="height: 70px;"
+            />
+            <!-- 評價者姓名、時間、評價內容 -->
+            <div class="col">
+              <span>布丁狗<span>
+              <span style="color: gray;">2025-01-23</span>
+              <p>★★★★★</p>
+              <p class="mt-2">老師的內容很扎實，非常有幫助</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <!-- footer -->
+    <div id="footer-container"></div>
     <script src="../js/bootstrap.bundle.js"></script>
     <script>
       // 使用 JavaScript 動態載入navbar.html
@@ -499,6 +513,13 @@
         .then((response) => response.text())
         .then((data) => {
           document.getElementById("navbar-container").innerHTML = data;
+        });
+
+        // 使用 JavaScript 動態載入footer.html
+      fetch("../plug/footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer-container").innerHTML = data;
         });
 
       // 控制簡介顯示

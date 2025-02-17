@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的課程</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .active {
+            border-bottom: 2px solid blue;
+            font-weight: bold;
+        }
+
+        .course-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .progress-bar {
+            background: #ddd;
+            height: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .progress-bar div {
+            background: blue;
+            height: 100%;
+            border-radius: 5px;
+        }
+
+        .user-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-header img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="user-header">
+        <img id="user-avatar" src="/使用者頭像.jpg" alt="使用者頭像">
+        <h2 id="user-name">王小明的課程</h2>
+    </div>
+    <div class="tabs">
+        <div class="tab active" onclick="showTab('myCourses')">我的課程</div>
+        <div class="tab" onclick="showTab('completed')">已完成</div>
+        <div class="tab" onclick="showTab('favorites')">我的收藏</div>
+        <div class="tab" onclick="showTab('orders')">我的訂單</div>
+    </div>
+
+    <div id="myCourses">
+        <div class="course-card">
+            <h2>如何一夜暴富</h2>
+            <div class="progress-bar">
+                <div style="width: 55%;"></div>
+            </div>
+        </div>
+        <div class="course-card">
+            <h2>JavaScript 入門</h2>
+            <div class="progress-bar">
+                <div style="width: 80%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="favorites" style="display: none;">
+        <div class="course-card">
+            <h2>React 高級技巧</h2>
+            <button onclick="removeFavorite()">移除</button>
+        </div>
+    </div>
+
+    <div id="orders" style="display: none;">
+        <div class="course-card">
+            <h2>Vue.js 全攻略</h2>
+            <p>訂單編號: 123456</p>
+            <p style="color: red;">未付款 - 付款期限: 2025-02-20</p>
+            <button
+                style="background: red; color: white; padding: 5px 10px; border: none; border-radius: 5px;">前往付款</button>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            document.getElementById('myCourses').style.display = 'none';
+            document.getElementById('favorites').style.display = 'none';
+            document.getElementById('orders').style.display = 'none';
+            document.getElementById(tabName).style.display = 'block';
+
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function removeFavorite() {
+            alert('已移除收藏');
+        }
+        const userInfo = {
+            name: "王小明",
+            avatar: "/使用者頭像.jpg" // 可以改成動態 API 取得
+        };
+
+        document.getElementById("user-name").innerText = `${userInfo.name} 的課程`;
+        document.getElementById("user-avatar").src = userInfo.avatar;
+    </script>
+</body>
+
+</html>

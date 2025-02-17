@@ -5,14 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>首頁</title>
   <link rel="stylesheet" href="./home.css">
-
+<style>
+            body { font-family: Arial, sans-serif; }
+</style>
 </head>
 <body>
 
 <header>
     <div class="logo">
       <a href="#">
-        <img src="/大專/首頁/logo.jpg" alt="Website Logo">
+        <img src="/首頁/logo.jpg" alt="Website Logo">
       </a>Edumetrix
     </div>
     <div class="course-dropdown">
@@ -31,7 +33,28 @@
     </div>
     <div class="icons">
         <button>📹</button>
-        <button>🛒</button>  <!-- 購物車 -->
+
+        <button class="button" onclick="toggleModal('cartModal')">🛒 購物車 (0)</button>
+        <button class="button" onclick="toggleModal('ownedCoursesModal')">📚 已有課程</button>
+        
+        <div id="cartModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="toggleModal('cartModal')">&times;</span>
+                <h2>購物車</h2>
+                <p>你的購物車是空的喔！</p>
+                <button class="button" style="background-color: blue; width: 100%;"><a href="http://127.0.0.1:5500/%E9%A6%96%E9%A0%81/shopping.html">繼續選課！</a></button>
+            </div>
+        </div>
+        
+        <div id="ownedCoursesModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="toggleModal('ownedCoursesModal')">&times;</span>
+                <h2>已有課程</h2>
+                <p>你尚未購買任何課程。</p>
+            </div>
+        </div>
+
+
         <button onclick="openModal()">😊 登入/註冊</button> <!-- 登入註冊 -->
         <button onclick="toggleProfileMenu()">👤會員中心</button> <!-- 個人資料 -->
         <div class="profile-menu" id="profileMenu">
@@ -39,8 +62,8 @@
                 <img src="profile.jpg" alt="頭像">
                 <span>使用者名稱</span>
             </div>
-            <a href="#">📄 我的課程</a>
-            <a href="#">😊 個人檔案</a>
+            <a href="http://127.0.0.1:5500/%E9%A6%96%E9%A0%81/class.html">📄 我的課程</a>
+            <a href="http://127.0.0.1:5500/%E9%A6%96%E9%A0%81/Member.html">😊 個人檔案</a>
             <a href="#">❤️ 我的收藏</a>
             <a href="#">↩️ 登出</a>
         </div>

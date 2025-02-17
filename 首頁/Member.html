@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>會員中心</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .sidebar h2 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar nav ul li {
+            margin: 10px 0;
+        }
+
+        .sidebar nav ul li a {
+            text-decoration: none;
+            color: black;
+            display: block;
+            padding: 10px;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        h3 {
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .login-option {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .login-btn {
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .yotta {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .facebook {
+            background-color: #4267B2;
+            color: white;
+        }
+
+        .google {
+            background-color: #DB4437;
+            color: white;
+        }
+
+        .email-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .change-email-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .gender-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .birthday,
+        .address {
+            display: flex;
+            gap: 10px;
+        }
+
+        .save-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<div class="container">
+    <!-- 側邊欄 -->
+    <aside class="sidebar">
+        <img src="/使用者頭像.jpg" alt="使用者頭像" class="avatar">
+        <h2>學員</h2>
+        <nav>
+            <ul>
+                <li><a href="#">登入方式</a></li>
+                <li><a href="#">信箱驗證</a></li>
+                <li><a href="#">個人資訊</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- 主要內容 -->
+    <main class="content">
+        <!-- 登入方式 -->
+        <section class="login-methods">
+            <h3>登入方式</h3>
+            <p>提供多元的登入方式設定</p>
+            <div class="login-option">
+                <button class="login-btn yotta">建立  帳號</button>
+                <button class="login-btn facebook">連結 Facebook 帳號</button>
+                <button class="login-btn google">連結 Google 帳號</button>
+            </div>
+        </section>
+
+        <!-- 信箱驗證 -->
+        <section class="email-verification">
+            <h3>信箱驗證</h3>
+            <p>驗證後啟用購買交易功能</p>
+            <div class="email-box">
+                <span>已驗證：</span>
+                <span class="email">z123456@gmail.com</span>
+                <button class="change-email-btn">變更信箱</button>
+            </div>
+        </section>
+
+        <!-- 個人資訊 -->
+        <section class="personal-info">
+            <h3>個人資訊</h3>
+            <form id="info-form">
+                <label for="nickname">暱稱</label>
+                <input type="text" id="nickname" value="YOTTA 學員">
+
+                <label for="fullname">姓名</label>
+                <input type="text" id="fullname" placeholder="請輸入姓名">
+
+                <label>性別</label>
+                <div class="gender-options">
+                    <input type="radio" name="gender" id="male"><label for="male">男</label>
+                    <input type="radio" name="gender" id="female"><label for="female">女</label>
+                    <input type="radio" name="gender" id="other"><label for="other">多元</label>
+                </div>
+
+                <label>生日</label>
+                <div class="birthday">
+                    <select id="year"></select>
+                    <select id="month"></select>
+                    <select id="day"></select>
+                </div>
+
+                <label>地址</label>
+                <div class="address">
+                    <select id="country">
+                        <option>台灣</option>
+                    </select>
+                    <select id="city"></select>
+                    <input type="text" id="zipcode" placeholder="郵遞區號">
+                    <input type="text" id="address" placeholder="請輸入地址">
+                </div>
+
+                <button type="submit" class="save-btn">儲存</button>
+            </form>
+        </section>
+    </main>
+</div>
+<script>
+    // 動態填充生日選項
+    window.onload = function () {
+        let yearSelect = document.getElementById('year');
+        let monthSelect = document.getElementById('month');
+        let daySelect = document.getElementById('day');
+        let citySelect = document.getElementById('city');
+
+        // 年份
+        for (let i = 2024; i >= 1900; i--) {
+            let option = document.createElement('option');
+            option.value = i;
+            option.text = i;
+            yearSelect.appendChild(option);
+        }
+
+        // 月份
+        for (let i = 1; i <= 12; i++) {
+            let option = document.createElement('option');
+            option.value = i;
+            option.text = i;
+            monthSelect.appendChild(option);
+        }
+
+        // 日期
+        for (let i = 1; i <= 31; i++) {
+            let option = document.createElement('option');
+            option.value = i;
+            option.text = i;
+            daySelect.appendChild(option);
+        }
+
+        // 城市
+        let cities = ["台北", "新北", "台中", "台南", "高雄"];
+        cities.forEach(city => {
+            let option = document.createElement('option');
+            option.value = city;
+            option.text = city;
+            citySelect.appendChild(option);
+        });
+    };
+
+</script>
+</body>
+
+</html>

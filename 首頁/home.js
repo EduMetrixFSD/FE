@@ -103,3 +103,10 @@ document.addEventListener("DOMContentLoaded", function() {
     showSlide(index);
     startCarousel();
 });
+
+
+// 購物車
+function toggleModal(id) {
+    var modal = document.getElementById(id);
+    modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+}

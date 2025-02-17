@@ -103,3 +103,34 @@ document.addEventListener("DOMContentLoaded", function () {
   showSlide(index);
   startCarousel();
 });
+
+// 連結登入api，成功跳轉頁面
+document.getElementById("loginButton").addEventListener("click", async () => {
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
+
+  try {
+    const response = await fetch("你的登入API端點", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+      alert("登入成功！");
+      // 登入成功後跳轉至目標頁面
+      window.location.href = "../plug/navbarMember.html"; // 替換成你的目標頁面
+    } else {
+      alert(`登入失敗：${data.message}`);
+    }
+  } catch (error) {
+    console.error("發生錯誤:", error);
+    alert("無法完成登入，請稍後再試。");
+  }
+});

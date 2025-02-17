@@ -514,37 +514,12 @@
         .then((data) => {
           document.getElementById("navbar-container").innerHTML = data;
         });
-
-        // 使用 JavaScript 動態載入footer.html
+      // 使用 JavaScript 動態載入footer.html
       fetch("../plug/footer.html")
         .then((response) => response.text())
         .then((data) => {
           document.getElementById("footer-container").innerHTML = data;
         });
-
-      // 控制簡介顯示
-      document
-        .getElementById("toggle-btn")
-        .addEventListener("click", function () {
-          const extraContent = document.querySelector(".extra-content");
-          const isHidden =
-            extraContent.style.display === "none" ||
-            extraContent.style.display === "";
-
-          if (isHidden) {
-            extraContent.style.display = "block";
-            this.textContent = "顯示較少";
-          } else {
-            extraContent.style.display = "none";
-            this.textContent = "看更多";
-          }
-        });
-
-      // 控制公告區等頁籤
-      var firstTabEl = document.querySelector("#myTab li:first-child button");
-      var firstTab = new bootstrap.Tab(firstTabEl);
-
-      firstTab.show();
     </script>
   </body>
 </html>

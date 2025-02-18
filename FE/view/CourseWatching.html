@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <title>從興趣到接案：建立專業插畫創作流程</title>
+  </head>
+  <body>
+    <!-- 導覽列 -->
+    <div class="border">
+      <nav class="row container justify-content-between">
+        <img src="../photo/Edumetrix.jpg" class="col-2 m-3" />
+        <button class="btn col-1">我的課程</button>
+      </nav>
+    </div>
+    <!-- 課程內容 -->
+    <div class="container">
+      <div class="row">
+        <!-- 影片區、公告區 -->
+        <div class="row col-9 border">
+          <iframe
+            height="500px"
+            src="https://www.youtube.com/embed/U6Ts9sl4IU8?si=zlVD3pcGd3NnkA5G"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+    <!-- 介紹、公告、問答、評價切換區 -->
+      <!-- 到某個地方的時候黏貼在上緣 -->
+      <ul
+      class="nav nav-tabs justify-content-around m-5"
+      id="myTab"
+      role="tablist"
+    >
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link active"
+          id="home-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#home"
+          type="button"
+          role="tab"
+          aria-controls="home"
+          aria-selected="true"
+        >
+          介紹
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="profile-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#profile"
+          type="button"
+          role="tab"
+          aria-controls="profile"
+          aria-selected="false"
+        >
+          討論
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="messages-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#messages"
+          type="button"
+          role="tab"
+          aria-controls="messages"
+          aria-selected="false"
+        >
+          公告
+        </button>
+    </li>
+    </ul>
+    <!-- 介紹、公告、章節、問答、評價內容 -->
+    <div class="tab-content">
+      <!-- 課程介紹內容 -->
+      <div class="tab-pane active m-5"  id="home" role="tabpanel">
+        <p>
+          <h3>對於插畫可能性，你瞭解了多少</h3>
+          <br />
+
+          插畫一直以來在台灣較多都是關於手繪技法能力的培養與教育，然而在靈感發想、尋找適合自己創作的風格、養成有系統插畫創作習慣的方面，卻比較少著墨，而這些問題容易導致許多對插畫有興趣的創作者，在日後接案時產生徬徨。
+          <br />
+          這堂課程為了讓插畫創作者們，對於插畫這個產業有更多的瞭解，將會以美國多數插畫科系傳授給學生的創作練習形式為藍本，帶入較為嚴謹的習慣與接案觀念，並透過以往插畫經紀累積的經驗切入，從不同視角讓你們重新認識市場與插畫可以應用的方式，讓學完課程的學員，日後接案時能夠從容的應對，並尋找到自己適合的風格。
+        </p>
+        <img src="../photo/5d9d5d36421a860021dc4534.avif" style="width: 100%;"/>
+      </div>
+      <!-- 討論區-->
+      <div class="tab-pane m-5" id="profile" role="tabpanel">
+        <h4>與你的老師同學一起討論課程相關的問題吧！</h4>
+        <p>
+            這裡是專屬於課堂同學及老師的討論區，對於課程內容有任何想法或想要問老師問題，都可以在這裡發起討論！
+        </p>
+        <br />
+        <h5>請輸入問題：</h5>
+        <input style="width: 100%" type="text" value="" />
+        <br /><br />
+        <p>1則問答</p>
+        <hr />
+        <div class="container mt-5">
+          <!-- 問題、回覆 -->
+          <div class="row border p-4">
+            <!-- 提問者頭貼 -->
+            <img
+              src="../photo/圖片一.png"
+              class="rounded-circle me-3 col-1"
+              style="height: 50px;"
+            />
+            <!-- 提問者姓名、時間、問題 -->
+            <div class="col">
+              <span>布丁狗<span>
+              <span style="color: gray;">2024-11-23</span>
+              <p class="mt-2">希望知道如何尋找插畫創作的靈感，這部分老師可以多講一些~謝謝</p>
+              <!-- 答覆 -->
+              <div class="bg-light p-4">
+                <!-- 老師名稱 -->
+                <strong><span>Yu-Ming Huang<span></span></strong>
+                <span style="color: gray;">2024-12-29</span>
+                  <p class="mt-2">第二章的單元會有介紹唷！</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 公告區 -->
+      <div class="tab-pane m-5" id="messages" role="tabpanel">
+        <h4>來關注最新的課程資訊吧！</h4>
+        <p>這裡是專屬課程的公告區，老師將在此發佈與課程相關的重要資訊，你可以查看所有與課程有關的最新公告。</p>
+        <br>
+        <div class="card">
+          <div class="card-header">
+            <h4>2024/10/24 【課程內容全部完成上架】</h4>
+          </div>
+          <pre class="card-body">
+
+          各位學員大家好：
+            
+            
+          再次感謝大家參與這堂課程，所有內容在今天上架完成囉！
+            
+          接下來將帶大家繼續運用前幾章所學，從構圖、上底色到描繪細節等步驟，繪製出清新簡約風小店和民宅裡的餐館；
+          你的作品如果想要搭配文案，讓編排更為靈活，老師會示範如何將插畫作進一步的延伸應用。
+          從觀察感受到描繪刻畫，和 Deer 老師一起打造手繪療癒小世界吧，我們線上見囉！
+            
+            
+          *喜歡這門課的你，請不吝分享你的五星好評，學習完課程後歡迎分享你的學習心得與成果！
+            登入會員，從「我的課程」頁面中找到本課程，點選「 ★評價課程 」填寫內容即完成評價。
+            你的好評是我們最大的支援與鼓勵，謝謝大家！
+            
+            
+           ▌ 課程上架內容：    
+            
+           - 範圍：單元 18~29（第五章、清新簡約風小店 ～ 第七章、插畫的延伸應用）
+            
+          - 教材：單元 18, 23，已於教材區提供第五、六章線稿檔案，下載方式可參閱此篇「 下載課程教材 」圖文說明。
+            
+          - 作業：作業 3, 4，大家可以在課後練習並分享你的作品，繳交方式可參閱此篇「 課程作業 」圖文說明。
+            
+          ＊備註：請於課程完整上架後3個月內，將你的作品上傳至作業區，就能得到專屬作業回饋喔＊
+            
+            
+           ▌常見QA
+            
+          - 課程播放器不順暢或無法順利觀看，請參閱此篇「  課程播放器不順暢或無法順利觀看 」說明。        
+            
+          - 若對平台使用有其他問題，請參閱此篇「 常見問題 」說明。        
+            
+          - 若對課程教學內容有問題，歡迎使用討論區功能與老師討論。        
+            
+          - 若還有任何疑問，請透過平台首頁右下方 客服對話視窗（藍色對話圖示）傳送訊息，告訴我們你遇到的任何問題喔！
+            </pre>
+        </div>
+      </div>
+    </div>
+        </div>
+        <!-- 章節切換 -->
+        <div class="col-3">
+        <div class="sticky-top">
+            <h4 class="m-3">單元列表</h4>
+          <div class="tab-pane ms-5" id="chapter" role="tabpanel" style="width: 100%;">
+            <div class="container">
+              <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button
+                      class="accordion-button"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne"
+                      aria-expanded="true"
+                      aria-controls="collapseOne"
+                    >
+                      第一章
+                    </button>
+                  </h2>
+                  <div
+                    id="collapseOne"
+                    class="accordion-collapse collapse show"
+                    aria-labelledby="heading1"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <button class="accordion-body btn" style="width: 100%">
+                      1-1
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      1-2
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      1-3
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      1-4
+                    </button>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="heading2">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse2"
+                      aria-expanded="false"
+                      aria-controls="collapse2"
+                    >
+                      第二章
+                    </button>
+                  </h2>
+                  <div
+                    id="collapse2"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="heading2"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <button class="accordion-body btn" style="width: 100%">
+                      2-1
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      2-2
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      2-3
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      2-4
+                    </button>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="heading3">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse3"
+                      aria-expanded="false"
+                      aria-controls="collapse3"
+                    >
+                      第三章
+                    </button>
+                  </h2>
+                  <div
+                    id="collapse3"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="heading3"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <button class="accordion-body btn" style="width: 100%">
+                      3-1
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      3-2
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      3-3
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      3-4
+                    </button>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="heading4">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse4"
+                      aria-expanded="true"
+                      aria-controls="collapse4"
+                    >
+                      第四章
+                    </button>
+                  </h2>
+                  <div
+                    id="collapse4"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="heading4"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <button class="accordion-body btn" style="width: 100%">
+                      4-1
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      4-2
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      4-3
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      4-4
+                    </button>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="heading5">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse5"
+                      aria-expanded="true"
+                      aria-controls="collapse5"
+                    >
+                      第五章
+                    </button>
+                  </h2>
+                  <div
+                    id="collapse5"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="heading5"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <button class="accordion-body btn" style="width: 100%">
+                      5-1
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      5-2
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      5-3
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      5-4
+                    </button>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="heading6">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse6"
+                      aria-expanded="true"
+                      aria-controls="collapse6"
+                    >
+                      第六章
+                    </button>
+                  </h2>
+                  <div
+                    id="collapse6"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="heading6"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <button class="accordion-body btn" style="width: 100%">
+                      6-1
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      6-2
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      6-3
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      6-4
+                    </button>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="heading7">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse7"
+                      aria-expanded="true"
+                      aria-controls="collapse7"
+                    >
+                      第七章
+                    </button>
+                  </h2>
+                  <div
+                    id="collapse7"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="heading7"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <button class="accordion-body btn" style="width: 100%">
+                      7-1
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      7-2
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      7-3
+                    </button>
+                    <button class="accordion-body btn" style="width: 100%">
+                      7-4
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+    <script src="../js/bootstrap.bundle.js"></script>
+    <script>
+    // 控制公告區等頁籤
+        var firstTabEl = document.querySelector("#myTab li:first-child button");
+        var firstTab = new bootstrap.Tab(firstTabEl);
+  
+        firstTab.show();</script>
+  </body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>首頁</title>
+    <link rel="stylesheet" href="../css/home.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a href="#"> <img src="../photo/logo.jpg" alt="Website Logo" /> </a
+        >Edumetrix
+      </div>
+      <div class="course-dropdown">
+        <button>課程類別 ▼</button>
+        <div class="course-menu">
+          <a href="#">科技</a>
+          <a href="#">語言</a>
+          <a href="#">藝術</a>
+          <a href="#">職場</a>
+          <a href="#">生活</a>
+        </div>
+      </div>
+      <div class="search-container">
+        <button>🔍</button>
+        <input type="text" placeholder="搜尋影片課程、文章…" />
+      </div>
+      <div class="icons">
+        <button>📹</button>
+        <button>🛒</button>
+        <!-- 購物車 -->
+        <button onclick="openModal()">😊 登入/註冊</button>
+        <!-- 登入註冊 -->
+        <button onclick="toggleProfileMenu()">👤會員中心</button>
+        <!-- 個人資料 -->
+        <div class="profile-menu" id="profileMenu">
+          <div class="profile-header">
+            <img src="profile.jpg" alt="頭像" />
+            <span>使用者名稱</span>
+          </div>
+          <a href="#">📄 我的課程</a>
+          <a href="#">😊 個人檔案</a>
+          <a href="#">❤️ 我的收藏</a>
+          <a href="#">↩️ 登出</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- 登入註冊 -->
+    <div class="modal" id="loginModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="tab">
+          <button id="loginTab" class="active" onclick="showLogin()">
+            登入
+          </button>
+          <button id="registerTab" onclick="showRegister()">註冊</button>
+        </div>
+        <div class="social-login">
+          <img src="../photo/APPLE1.png" alt="Google" />
+          <img src="../photo/FB.png" alt="Facebook" />
+          <img src="../photo/google.jpg" alt="Apple" />
+        </div>
+        <hr />
+        <div id="loginForm" class="form-container active">
+          <div class="input-group">
+            <label>電子信箱</label>
+            <input type="email" placeholder="輸入電子信箱" />
+          </div>
+          <div class="input-group">
+            <label>密碼</label>
+            <input type="password" placeholder="輸入密碼" />
+          </div>
+          <div class="remember-forgot">
+            <label><input type="checkbox" /> 記住我</label>
+            <a href="#">忘記密碼?</a>
+          </div>
+          <button>登入</button>
+        </div>
+        <div id="registerForm" class="form-container">
+          <div class="input-group">
+            <label>電子信箱</label>
+            <input type="email" placeholder="輸入電子信箱" />
+          </div>
+          <div class="input-group">
+            <label>設定登入密碼</label>
+            <input type="password" placeholder="設定登入密碼" />
+          </div>
+          <div class="input-group">
+            <label>確認密碼</label>
+            <input type="password" placeholder="確認密碼" />
+          </div>
+          <button>註冊</button>
+        </div>
+      </div>
+    </div>
+    <!-- 輪播圖 -->
+    <div class="carousel">
+      <div class="carousel-container">
+        <a href="#"
+          ><img
+            src="https://dummyimage.com/600x300/00ff5e/ffffff"
+            class="carousel-img active"
+            loading="lazy"
+        /></a>
+        <a href="#"
+          ><img
+            src="https://dummyimage.com/600x300/ff8400/ffffff"
+            class="carousel-img"
+            loading="lazy"
+        /></a>
+        <a href="#"
+          ><img
+            src="https://dummyimage.com/600x300/f057c5/ffffff"
+            class="carousel-img"
+            loading="lazy"
+        /></a>
+      </div>
+
+      <!-- 左右切換按鈕 -->
+      <button class="prev" onclick="prevSlide()">&#10094;</button>
+      <button class="next" onclick="nextSlide()">&#10095;</button>
+
+      <!-- 指示器（圓點） -->
+      <div class="indicators">
+        <span class="dot active" onclick="setSlide(0)"></span>
+        <span class="dot" onclick="setSlide(1)"></span>
+        <span class="dot" onclick="setSlide(2)"></span>
+      </div>
+    </div>
+
+    <!-- 課程 -->
+    <div class="course-section">
+      <h2>推薦課程</h2>
+      <div class="course-list">
+        <div class="course-card">
+          <img src="course1.jpg" alt="課程圖片" /> <br />如何一夜致富 -
+          <br />講師: 張三 ⭐4.8 (3000) ⏳8hr 👤1000人 <br />
+          NT$10,000
+        </div>
+        <div class="course-card">
+          <img src="course1.jpg" alt="課程圖片" /><br />如何學好英語 -
+          <br />講師: 李四 ⭐4.6 (2500) ⏳6hr 👤1200人 <br />
+          NT$8,000
+        </div>
+        <div class="course-card">
+          <img src="course1.jpg" alt="課程圖片" /><br />程式設計入門 -
+          <br />講師: 王五 ⭐4.9 (4000) ⏳10hr 👤1500人 <br />
+          NT$12,000
+        </div>
+      </div>
+    </div>
+
+    <div class="course-section">
+      <h2>最新課程</h2>
+      <div class="course-list">
+        <div class="course-card">
+          <img src="course1.jpg" alt="課程圖片" /><br />人工智慧基礎 -
+          <br />講師: 赵六 ⭐4.7 (2000) ⏳9hr 👤800人 <br />
+          NT$15,000
+        </div>
+        <div class="course-card">
+          <img src="course1.jpg" alt="課程圖片" /><br />數據分析入門 -
+          <br />講師: 孫七 ⭐4.5 (1800) ⏳7hr 👤900人 <br />
+          NT$9,500
+        </div>
+        <div class="course-card">
+          <img src="course1.jpg" alt="課程圖片" /><br />UI/UX 設計 - <br />講師:
+          周八 ⭐4.6 (2200) ⏳5hr 👤1100人 <br />
+          NT$11,000
+        </div>
+      </div>
+    </div>
+
+    <div class="course-section">
+      <h2>促銷課程</h2>
+      <div class="course-list">
+        <div class="course-card">
+          <img src="course1.jpg" alt="課程圖片" /><br />限時優惠：行銷策略 -
+          <br />講師: 馬九 ⭐4.4 (1500) ⏳6hr 👤600人 <br />
+          NT$7,000
+        </div>
+        <div class="course-card">
+          <img src="course1.jpg" alt="課程圖片" /><br />特價：Python 入門 -
+          <br />講師: 林十 ⭐4.9 (3200) ⏳10hr 👤1300人 <br />
+          NT$10,000
+        </div>
+        <div class="course-card">
+          <img src="course1.jpg" alt="課程圖片" /><br />設計思維 - <br />講師:
+          陳十一 ⭐4.7 (2900) ⏳8hr 👤1400人 <br />
+          NT$13,000
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/home.js" defer></script>
+    <script src="../js/home.js"></script>
+  </body>
+</html>

@@ -31,29 +31,28 @@
         <button>🔍</button>
         <input type="text" placeholder="搜尋影片課程、文章…">
     </div>
+    <!-- 購物車 -->
     <div class="icons">
         <button>📹</button>
-
-        <button class="button" onclick="toggleModal('cartModal')">🛒 購物車 (0)</button>
-        <button class="button" onclick="toggleModal('ownedCoursesModal')">📚 已有課程</button>
-        
-        <div id="cartModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="toggleModal('cartModal')">&times;</span>
+        <button class="button1" onclick="toggleModal('cartModal')">🛒 購物車 (0)</button>
+        <button class="button1" onclick="toggleModal('ownedCoursesModal')">📚 已有課程</button>
+    
+        <div id="cartModal" class="modal1" style="display: none;">
+            <div class="modal1-content">
+                <span class="close1" onclick="toggleModal('cartModal')">&times;</span>
                 <h2>購物車</h2>
                 <p>你的購物車是空的喔！</p>
-                <button class="button" style="background-color: blue; width: 100%;"><a href="http://127.0.0.1:5500/%E9%A6%96%E9%A0%81/shopping.html">繼續選課！</a></button>
+                <button class="button1" style="background-color: blue; width: 100%;"><a href="http://127.0.0.1:5500/%E9%A6%96%E9%A0%81/shopping.html" style="color: white; text-decoration: none;">繼續選課！</a></button>
             </div>
         </div>
-        
-        <div id="ownedCoursesModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="toggleModal('ownedCoursesModal')">&times;</span>
+    
+        <div id="ownedCoursesModal" class="modal1" style="display: none;">
+            <div class="modal1-content">
+                <span class="close1" onclick="toggleModal('ownedCoursesModal')">&times;</span>
                 <h2>已有課程</h2>
                 <p>你尚未購買任何課程。</p>
             </div>
         </div>
-
 
         <button onclick="openModal()">😊 登入/註冊</button> <!-- 登入註冊 -->
         <button onclick="toggleProfileMenu()">👤會員中心</button> <!-- 個人資料 -->
@@ -72,6 +71,7 @@
   </header>
 
   <!-- 登入註冊 -->
+  <button onclick="openModal()">登入/註冊</button>
   <div class="modal" id="loginModal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>

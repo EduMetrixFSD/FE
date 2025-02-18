@@ -9,10 +9,10 @@ document.querySelector(".back-to-top").addEventListener("click", () => {
 });
 // 登入註冊開啟視窗
 function openModal() {
-  document.getElementById("loginModal").style.display = "flex";
+    document.getElementById("loginModal").style.display = "flex";
 }
 function closeModal() {
-  document.getElementById("loginModal").style.display = "none";
+    document.getElementById("loginModal").style.display = "none";
 }
 function loginWithGoogle() {
   alert("使用 Google 登入");
@@ -103,6 +103,12 @@ document.addEventListener("DOMContentLoaded", function () {
   showSlide(index);
   startCarousel();
 });
+
+// 購物車
+function toggleModal(id) {
+    var modal = document.getElementById(id);
+    modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+}
 
 // 連結登入api，成功跳轉頁面
 document.getElementById("loginButton").addEventListener("click", async () => {

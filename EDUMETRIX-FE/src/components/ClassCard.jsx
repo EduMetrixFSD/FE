@@ -19,17 +19,14 @@ function ClassCard({ image, title, teacher, rating, duration, people, price }) {
             by {teacher}
           </a>
           <br />
-          {/* 評價/時間 */}
-          <div
-            className="flex justify-between text-md my-2
-          "
-          >
+          {/* 評價、人數、時間 */}
+          <div className="flex justify-between text-md my-2">
             <span>
               <i className="bi bi-star-fill text-yellow-300"></i>
               &nbsp;{rating}
             </span>
             <span>
-              <i classNmae="bi bi-people"></i>
+              <i className="bi bi-people"></i>
               &nbsp;{people}
             </span>
             <span>

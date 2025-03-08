@@ -37,7 +37,7 @@ function Navbar() {
         </div>
 
         {/* 右側：根據登入狀態顯示不同按鈕 */}
-        <div className="flex items-center space-x-4">
+        <div className="flex justify-between space-x-4">
           {isLoggedIn ? (
             <>
               {/* 已登入時顯示購物車、通知、我的課程、會員中心 */}

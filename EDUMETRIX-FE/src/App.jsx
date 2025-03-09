@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import Test from "./pages/Test.jsx"; // 測試頁面
 import Home from "./pages/Home.jsx";
 import CourseCategorySearch from "./pages/CourseCategorySearch.jsx";
 import CourseKeywordSearchPage from "./pages/CourseKeywordSearchPage.jsx";
 import MyCourse from "./pages/MyCourse.jsx";
 import CourseDetail from "./pages/CourseDetail.jsx";
-import Test from "./pages/Test.jsx"; // 測試頁面
+import ShoppingCart from "./pages/ShoppingCart.jsx";
+import Checkout from "./pages/Checkout.jsx";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
         />
         <Route path="/MyCourse" element={<MyCourse />} />
         <Route path="/coursedetail" element={<CourseDetail />} />
+        <Route path="/shoppingcart" element={<ShoppingCart />} />
+        <Route path="/Checkout" element={<Checkout />} />
       </Routes>
     </Router>
   );

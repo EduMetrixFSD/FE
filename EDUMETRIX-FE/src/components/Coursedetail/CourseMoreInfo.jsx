@@ -1,3 +1,4 @@
+import React, { Component } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css"; // 自定義CSS可覆蓋這部分
 import {

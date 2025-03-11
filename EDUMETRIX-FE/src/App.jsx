@@ -9,6 +9,8 @@ import MyCourse from "./pages/MyCourse.jsx";
 import CourseDetail from "./pages/CourseDetail.jsx";
 import ShoppingCart from "./pages/ShoppingCart.jsx";
 import Checkout from "./pages/Checkout.jsx";
+import CourseWatching from "./pages/CourseWatching.jsx";
+import Backstage from "./pages/Backstage.jsx";
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
         <Route path="/coursedetail" element={<CourseDetail />} />
         <Route path="/shoppingcart" element={<ShoppingCart />} />
         <Route path="/Checkout" element={<Checkout />} />
+        <Route path="/CourseWatching" element={<CourseWatching />} />
+        <Route path="/Backstage" element={<Backstage />} />
       </Routes>
     </Router>
   );

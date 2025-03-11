@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // 用於重定向
 import Button from "../button/Button.jsx";
-import axios from "axios";
+// import axios from "axios";
 
 function PersonalPage({ setIsLoggedIn }) {
   const [isPopoverVisible, setIsPopoverVisible] = useState(false);
@@ -19,22 +18,22 @@ function PersonalPage({ setIsLoggedIn }) {
   };
 
   // 從資料庫撈會員資料
-  const [userData, setUserData] = useState(null); // 用小駝峰命名
+  // const [userData, setUserData] = useState(null); // 用小駝峰命名
 
-  useEffect(() => {
-    // 發送 GET 請求
-    axios
-      .get("http://127.0.0.1:8000/api/auth/user")
-      .then((response) => {
-        // 檢查回應資料並設置到 state
-        console.log(response.data); // 確保這裡的資料結構正確
-        setUserData(response.data); // 假設資料是在 response.data
-      })
-      .catch((error) => {
-        // 處理錯誤
-        console.error(error);
-      });
-  }, []); // 空依賴陣列確保只執行一次
+  // useEffect(() => {
+  //   // 發送 GET 請求
+  //   axios
+  //     .get("http://127.0.0.1:8000/api/auth/user")
+  //     .then((response) => {
+  //       // 檢查回應資料並設置到 state
+  //       console.log(response.data); // 確保這裡的資料結構正確
+  //       setUserData(response.data); // 假設資料是在 response.data
+  //     })
+  //     .catch((error) => {
+  //       // 處理錯誤
+  //       console.error(error);
+  //     });
+  // }, []); // 空依賴陣列確保只執行一次
 
   const handleLogout = () => {
     // 清除 localStorage 或其他登錄狀態

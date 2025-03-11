@@ -16,11 +16,10 @@ function CourseKeywordSearchPage() {
   useEffect(() => {
     if (keyword) {
       axios
-        .get(`http://127.0.0.1:8000/api/courses/search`, {
-          params: { query: keyword },
-        })
+        .get(`http://127.0.0.1:8000/api/courses/search?keyword=${keyword}`)
         .then((response) => {
-          setCourses(response.data.courses || []); // 確保 courses 是一個陣列
+          console.log(response.data); // 檢查回應結構
+          setCourses(response.data.data || []); // 確保 courses 是一個陣列
         })
         .catch((error) => {
           console.error("搜尋錯誤:", error);
@@ -44,12 +43,12 @@ function CourseKeywordSearchPage() {
             courses.map((course, index) => (
               <ClassCard
                 key={index}
-                image={course.image}
+                image={course.cover_image} // 根據資料確定圖片欄位
                 title={course.title}
-                teacher={course.teacher}
-                rating={course.rating}
-                duration={course.duration}
-                people={course.people}
+                teacher={course.teacher.name} // 確保這些欄位存在於資料中
+                rating={course.reviews.rating} // 需要總計，目前無顯現
+                duration={course.duration} // 沒有這個資料
+                people={course.enrolled_students}
                 price={course.price}
               />
             ))

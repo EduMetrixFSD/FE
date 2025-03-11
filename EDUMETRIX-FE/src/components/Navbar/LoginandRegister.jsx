@@ -1,12 +1,33 @@
 import React, { useState } from "react";
 import Button from "../button/Button.jsx";
 
-function LoginandRegister() {
+function LoginandRegister({ onLogin, onRegister }) {
   const [isOpen, setIsOpen] = useState(false); // 控制彈跳視窗的開關
   const [isLogin, setIsLogin] = useState(true); // 判斷顯示登入或註冊頁面
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
+  };
+
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const [registrationData, setRegistrationData] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    onLogin(credentials);
+  };
+
+  const handleRegisterSubmit = (e) => {
+    e.preventDefault();
+    if (registrationData.password === registrationData.confirmPassword) {
+      onRegister(registrationData);
+    } else {
+      alert("密碼與確認密碼不相符");
+    }
   };
 
   return (
@@ -54,7 +75,10 @@ function LoginandRegister() {
 
             {/* 登入頁面 */}
             {isLogin && (
-              <div className="flex flex-col items-center m-4 mt-6">
+              <form
+                className="flex flex-col items-center m-4 mt-6"
+                onSubmit={handleLoginSubmit}
+              >
                 <div>
                   <div className="py-3">
                     <a href="" className="px-8 text-3xl">
@@ -81,6 +105,13 @@ function LoginandRegister() {
                       type="email"
                       placeholder="信箱"
                       className="mb-2 px-12 py-2 border rounded "
+                      value={credentials.email}
+                      onChange={(e) =>
+                        setCredentials({
+                          ...credentials,
+                          email: e.target.value,
+                        })
+                      }
                     />
                   </div>
                   <div className="relative w-full">
@@ -89,6 +120,13 @@ function LoginandRegister() {
                       type="password"
                       placeholder="密碼"
                       className="mb-2 px-12 py-2 border rounded "
+                      value={credentials.password}
+                      onChange={(e) =>
+                        setCredentials({
+                          ...credentials,
+                          password: e.target.value,
+                        })
+                      }
                     />
                   </div>
                 </div>
@@ -103,13 +141,21 @@ function LoginandRegister() {
                   </a>
                 </div>
 
-                <Button label="登入" className="mt-4 bg-gray-300 px-12" />
-              </div>
+                <button
+                  className="mt-4 bg-gray-300 px-12 p-2 rounded"
+                  type="submit"
+                >
+                  登入
+                </button>
+              </form>
             )}
 
             {/* 註冊頁面 */}
             {!isLogin && (
-              <div className="flex flex-col items-center m-4 mt-6">
+              <form
+                onSubmit={handleRegisterSubmit}
+                className="flex flex-col items-center m-4 mt-6"
+              >
                 <div>
                   <div className="py-3">
                     <a href="" className="px-8 text-3xl">
@@ -133,6 +179,13 @@ function LoginandRegister() {
                     type="email"
                     placeholder="輸入電子信箱"
                     className="mb-2 px-12 py-2 border rounded "
+                    value={registrationData.email}
+                    onChange={(e) =>
+                      setRegistrationData({
+                        ...registrationData,
+                        email: e.target.value,
+                      })
+                    }
                   />
                 </div>
                 <div className="relative w-full">
@@ -141,6 +194,13 @@ function LoginandRegister() {
                     type="password"
                     placeholder="設定登入密碼"
                     className="mb-2 px-12 py-2 border rounded "
+                    value={registrationData.password}
+                    onChange={(e) =>
+                      setRegistrationData({
+                        ...registrationData,
+                        password: e.target.value,
+                      })
+                    }
                   />
                 </div>
                 <div className="relative w-full">
@@ -149,6 +209,13 @@ function LoginandRegister() {
                     type="password"
                     placeholder="再次輸入登入密碼"
                     className="mb-2 px-12 py-2 border rounded "
+                    value={registrationData.confirmPassword}
+                    onChange={(e) =>
+                      setRegistrationData({
+                        ...registrationData,
+                        confirmPassword: e.target.value,
+                      })
+                    }
                   />
                 </div>
                 <p className="text-sm my-2">
@@ -162,8 +229,13 @@ function LoginandRegister() {
                   </a>
                 </p>
 
-                <Button label="註冊" className="mt-4 bg-gray-300 px-12" />
-              </div>
+                <button
+                  className="mt-4 bg-gray-300 px-12 p-2 rounded"
+                  type="submit"
+                >
+                  註冊
+                </button>
+              </form>
             )}
           </div>
         </div>

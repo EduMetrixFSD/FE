@@ -50,7 +50,7 @@ function Carousel() {
         onClick={goToPrevious}
         className="absolute top-1/2 left-4 transform -translate-y-1/2  text-white rounded-full p-2 opacity-70 hover:opacity-100 transition-opacity "
       >
-        <i class="bi bi-arrow-left-circle text-5xl"></i>
+        <i className="bi bi-arrow-left-circle text-5xl"></i>
       </button>
 
       {/* Next Button */}
@@ -58,7 +58,7 @@ function Carousel() {
         onClick={goToNext}
         className="absolute top-1/2 right-4 transform -translate-y-1/2  text-white rounded-full p-2 opacity-70 hover:opacity-100 transition-opacity"
       >
-        <i class="bi bi-arrow-right-circle text-5xl"></i>
+        <i className="bi bi-arrow-right-circle text-5xl"></i>
       </button>
 
       {/* Dots */}

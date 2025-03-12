@@ -71,29 +71,28 @@ function Navbar() {
   };
 
   const handleSearchSubmit = () => {
+    console.log("Search submit triggered");
+    console.log("Current search query:", searchQuery); // 檢查 searchQuery 狀態
+
     if (searchQuery.trim()) {
-      axios
-        .get(`http://127.0.0.1:8000/api/courses/search`, {
-          params: { query: searchQuery },
-        })
-        .then((response) => {
-          setSearchResults(response.data.courses);
-          // 生成包含搜尋字串的 URL，並導航到該頁面
-          navigate(
-            `/CourseKeywordSearchPage?keyword=${encodeURIComponent(
-              searchQuery
-            )}`
-          );
-        })
-        .catch((error) => {
-          console.error("搜尋錯誤:" + error);
-        });
+      // 在發出請求之前先執行導航
+      console.log(
+        "Navigating to:",
+        `/CourseKeywordSearchPage?keyword=${encodeURIComponent(searchQuery)}`
+      );
+      navigate(
+        `/CourseKeywordSearchPage?keyword=${encodeURIComponent(searchQuery)}`
+      );
+    } else {
+      console.log("Search query is empty");
     }
   };
 
   // 搜尋框Enter鍵事件
   const handleKeyDown = (e) => {
+    console.log("Key pressed:", e.key); // 檢查鍵盤按下的鍵
     if (e.key === "Enter") {
+      e.preventDefault(); // 防止表單提交或其他預設行為
       handleSearchSubmit();
     }
   };
@@ -119,7 +118,7 @@ function Navbar() {
               className="w-full border border-gray-500 rounded p-2 pl-8"
               value={searchQuery}
               onChange={handleSearchChange}
-              onKeyDown={handleKeyDown} // 綁定鍵盤事件
+              onKeyDown={handleKeyDown} // 確保事件正確綁定
             />
           </div>
         </div>

@@ -15,8 +15,10 @@ function CourseKeywordSearchPage() {
 
   useEffect(() => {
     if (keyword) {
+      console.log(keyword);
+
       axios
-        .get(`http://127.0.0.1:8000/api/courses/search?keyword=${keyword}`)
+        .get(`http://127.0.0.1:8000/api/search?keyword=${keyword}`)
         .then((response) => {
           console.log(response.data); // 檢查回應結構
           setCourses(response.data.data || []); // 確保 courses 是一個陣列
@@ -41,16 +43,22 @@ function CourseKeywordSearchPage() {
           {/* 防止 courses 是 undefined */}
           {courses.length > 0 ? (
             courses.map((course, index) => (
-              <ClassCard
-                key={index}
-                image={course.cover_image} // 根據資料確定圖片欄位
-                title={course.title}
-                teacher={course.teacher.name} // 確保這些欄位存在於資料中
-                rating={course.reviews.rating} // 需要總計，目前無顯現
-                duration={course.duration} // 沒有這個資料
-                people={course.enrolled_students}
-                price={course.price}
-              />
+              <a href={`/coursedetail?id=${course.id}`}>
+                <ClassCard
+                  key={index}
+                  image={course.cover_image || "default_image.jpg"} // 根據資料確定圖片欄位
+                  title={course.title || "無標題"}
+                  teacher={course.teacher.name || "未知老師"}
+                  rating={
+                    course.reviews_avg_rating
+                      ? parseFloat(course.reviews_avg_rating).toFixed(1)
+                      : "N/A"
+                  } // 將評價轉為數字取到小數點後一位
+                  duration={course.duration ? course.duration : "N/A"} // 沒有這個資料
+                  people={course.enrollments_count || 0}
+                  price={course.price ? parseInt(course.price, 10) : "未定價"}
+                />
+              </a>
             ))
           ) : (
             <p>找不到符合的課程</p>

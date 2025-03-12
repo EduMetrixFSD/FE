@@ -10,7 +10,9 @@ import {
 } from "react-accessible-accordion";
 import "react-accessible-accordion/dist/fancy-example.css";
 
-function CourseMoreInfo() {
+function CourseMoreInfo({ courseId }) {
+  console.log("coursemoreinfo:", courseId);
+
   return (
     <div className="mx-40 my-12">
       {/* Tabs 切換區 */}

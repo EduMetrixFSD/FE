@@ -21,18 +21,27 @@ function PersonalPage({ setIsLoggedIn }) {
   const [userData, setUserData] = useState(null); // 用小駝峰命名
 
   useEffect(() => {
-    // 發送 GET 請求
-    axios
-      .get("http://127.0.0.1:8000/api/auth/user")
-      .then((response) => {
-        // 檢查回應資料並設置到 state
-        console.log(response.data); // 確保這裡的資料結構正確
-        setUserData(response.data); // 假設資料是在 response.data
-      })
-      .catch((error) => {
-        // 處理錯誤
-        console.error(error);
-      });
+    const token = localStorage.getItem("token"); // 確保 token 存在
+
+    if (token) {
+      axios
+        .get("http://127.0.0.1:8000/api/auth/user", {
+          headers: {
+            Authorization: `Bearer ${token}`, // 加入 token 到 Authorization 標頭
+          },
+        })
+        .then((response) => {
+          // 檢查回應資料並設置到 state
+          console.log(response.data); // 確保這裡的資料結構正確
+          setUserData(response.data); // 假設資料是在 response.data
+        })
+        .catch((error) => {
+          // 處理錯誤
+          console.error(error);
+        });
+    } else {
+      console.log("沒有找到 token");
+    }
   }, []); // 空依賴陣列確保只執行一次
 
   const handleLogout = () => {
@@ -46,7 +55,17 @@ function PersonalPage({ setIsLoggedIn }) {
   return (
     <div className="relative w-[200px]">
       <Button
-        label={<img src="/photo/person.png" className="w-10 rounded-full" />}
+        label={
+          <img
+            src={
+              userData && userData.user.avater
+                ? userData.user.avater
+                : "/photo/person.png"
+            }
+            className="w-10 rounded-full m-2"
+            alt="Profile"
+          />
+        }
         onMouseEnter={showPopover}
         onMouseLeave={hidePopover}
       />
@@ -59,12 +78,18 @@ function PersonalPage({ setIsLoggedIn }) {
           <div className="flex">
             {/* 根據 userData 顯示圖片和名稱 */}
             <img
-              src={userData ? userData.profileImage : "/photo/person.png"}
+              src={
+                userData && userData.user.avater
+                  ? userData.user.avater
+                  : "/photo/person.png"
+              }
               className="w-10 rounded-full m-2"
               alt="Profile"
             />
             <span className="text-xl font-bold m-2">
-              {userData ? userData.name : "ABC"}
+              {userData
+                ? userData.user?.name || userData.user?.email.split("@")[0]
+                : "匿名"}
             </span>
           </div>
           <form className="flex flex-col m-2">

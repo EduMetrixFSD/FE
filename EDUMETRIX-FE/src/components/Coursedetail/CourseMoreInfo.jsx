@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css"; // 自定義CSS可覆蓋這部分
 import {
@@ -11,7 +12,28 @@ import {
 import "react-accessible-accordion/dist/fancy-example.css";
 
 function CourseMoreInfo({ courseId }) {
-  console.log("coursemoreinfo:", courseId);
+  const [course, setCourse] = useState(null); // 預設為 null，避免 undefined 錯誤
+  const [error, setError] = useState(null); // 用來儲存錯誤信息
+
+  useEffect(() => {
+    if (courseId) {
+      axios
+        .get(`http://127.0.0.1:8000/api/courses/${courseId}`)
+        .then((response) => {
+          console.log(response.data); // 檢查回應結構
+          setCourse(response.data); // 設置為物件
+        })
+        .catch((error) => {
+          console.error("搜尋錯誤:", error);
+          setError("無法取得搜尋結果，請稍後再試。");
+        });
+    }
+  }, [courseId]);
+
+  // 如果資料尚未加載，顯示 loading
+  if (!course) {
+    return <div>載入中...</div>;
+  }
 
   return (
     <div className="mx-40 my-12">
@@ -20,85 +42,74 @@ function CourseMoreInfo({ courseId }) {
         <TabList className="flex justify-around sticky top-0 bg-white">
           <Tab
             className="px-4 py-2 cursor-pointer"
-            selectedClassName=" border-b-2 border-blue-500"
+            selectedClassName=" border-b-2 border-blue-500 font-bold"
             style={{ outline: "none" }}
           >
             介紹
           </Tab>
           <Tab
             className="px-4 py-2 cursor-pointer"
-            selectedClassName="border-b-2 border-blue-500"
+            selectedClassName="border-b-2 border-blue-500 font-bold"
             style={{ outline: "none" }}
           >
             章節
           </Tab>
           <Tab
             className="px-4 py-2 cursor-pointer"
-            selectedClassName="border-b-2 border-blue-500"
+            selectedClassName="border-b-2 border-blue-500 font-bold"
             style={{ outline: "none" }}
           >
             購課問答
           </Tab>
           <Tab
             className="px-4 py-2 cursor-pointer"
-            selectedClassName="border-b-2 border-blue-500"
+            selectedClassName="border-b-2 border-blue-500 font-bold"
             style={{ outline: "none" }}
           >
             公告
           </Tab>
           <Tab
             className="px-4 py-2 cursor-pointer"
-            selectedClassName="border-b-2 border-blue-500"
+            selectedClassName="border-b-2 border-blue-500 font-bold"
             style={{ outline: "none" }}
           >
-            評價
+            課程評價
           </Tab>
         </TabList>
         <hr />
 
-        {/* 介紹 */}
+        {/* 介紹，使用圖片 */}
         <TabPanel className="mt-5">
           <div className="p-5 px-40">
-            <h3 className="text-2xl font-bold mb-4">
-              對於插畫可能性，你瞭解了多少
-            </h3>
-            <p className="mb-4">
-              插畫一直以來在台灣較多都是關於手繪技法能力的培養與教育，然而在靈感發想、尋找適合自己創作的風格、養成有系統插畫創作習慣的方面...
-            </p>
-            <img
-              src="./photo/5d9d5d36421a860021dc4534.avif"
-              alt="課程介紹"
-              className="w-full rounded-lg shadow-md"
-            />
+            <h3 className="text-2xl font-bold mb-4">{course.description}</h3>
           </div>
         </TabPanel>
 
         {/* 章節 */}
         <TabPanel>
           <div className="p-5 px-40">
+            {/* 手風琴 */}
             <Accordion allowZeroExpanded>
-              <AccordionItem>
-                <AccordionItemHeading>
-                  <AccordionItemButton>第一章</AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                  <button className="block w-full text-left p-2 ">1-1</button>
-                  <button className="block w-full text-left p-2 ">1-2</button>
-                </AccordionItemPanel>
-              </AccordionItem>
-              <AccordionItem>
-                <AccordionItemHeading>
-                  <AccordionItemButton>第二章</AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                  <button className="block w-full text-left p-2 border-b">
-                    2-1
-                  </button>
-                  <button className="block w-full text-left p-2 border-b">
-                    2-2
-                  </button>
-                </AccordionItemPanel>
-              </AccordionItem>
+              {course.chapters.map((chapter, chapterIndex) => (
+                <AccordionItem key={chapter.id}>
+                  <AccordionItemHeading>
+                    <AccordionItemButton>{chapter.title}</AccordionItemButton>
+                  </AccordionItemHeading>
+                  <AccordionItemPanel>
+                    {chapter.lessons.map((lesson, lessonIndex) => (
+                      <button
+                        key={lesson.id}
+                        className="block w-full text-left p-2 flex justify-between"
+                      >
+                        <span>
+                          {chapterIndex + 1}-{lessonIndex + 1} {lesson.title}
+                        </span>
+                        <span>單元時長</span>
+                      </button>
+                    ))}
+                  </AccordionItemPanel>
+                </AccordionItem>
+              ))}
             </Accordion>
           </div>
         </TabPanel>
@@ -118,27 +129,44 @@ function CourseMoreInfo({ courseId }) {
               value="請先登入以使用此功能"
               readOnly
             />
-            <div className="mt-4">
-              <div className="border p-4 rounded-md shadow-md">
-                <img
-                  src="./photo/圖片一.png"
-                  className="rounded-full w-14 h-14 mr-4 float-left"
-                  alt="提問者頭像"
-                />
-                <div className="overflow-hidden">
-                  <span className="font-bold">布丁狗</span>
-                  <span className="text-gray-500 ml-2">2024-11-23</span>
-                  <p className="mt-2">
-                    希望知道如何尋找插畫創作的靈感，這部分老師可以多講一些~謝謝
-                  </p>
-                  <div className="bg-gray-100 p-4 mt-2 rounded-lg">
-                    <strong className="block mb-1">Yu-Ming Huang</strong>
-                    <span className="text-gray-500">2024-12-29</span>
-                    <p className="mt-2">第二章的單元會有介紹唷！</p>
+            {course.questions && course.questions.length > 0 ? (
+              course.questions.map((question, index) => {
+                // 將 question.created_at 轉換為日期格式
+                const createdDate = new Date(question.created_at)
+                  .toLocaleDateString("zh-TW", {
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit",
+                  })
+                  .replace(/\//g, "-"); // 將 / 替換為 -;
+
+                return (
+                  <div
+                    key={index}
+                    className="border p-4 rounded-md shadow-md my-4 "
+                  >
+                    <img
+                      src={question.user.avater || "/photo/person.png"}
+                      className="rounded-full w-14 h-14 mr-4 float-left"
+                      alt="提問者頭像"
+                    />
+                    <div className="overflow-hidden">
+                      <span className="font-bold">{question.user.name}</span>
+                      <span className="text-gray-500 ml-2">
+                        {createdDate}
+                      </span>{" "}
+                      {/* 這裡顯示年月日 */}
+                      <h3 className="font-bold text-lg mt-2">
+                        {question.title}
+                      </h3>
+                      <p className="mt-2">{question.content}</p>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
+                );
+              })
+            ) : (
+              <p>尚無問題。</p>
+            )}
           </div>
         </TabPanel>
 
@@ -150,10 +178,29 @@ function CourseMoreInfo({ courseId }) {
               這裡是專屬課程的公告區，老師將在此發佈與課程相關的重要資訊。
             </p>
             <div className="border rounded-lg p-4 shadow-md">
-              <h4 className="font-bold">2024/10/24 【課程內容全部完成上架】</h4>
-              <p className="mt-2">
-                各位學員大家好：再次感謝大家參與這堂課程，所有內容在今天上架完成囉！
-              </p>
+              {course.announcements && course.announcements.length > 0 ? (
+                course.announcements.map((announcements, index) => {
+                  // 將 announcements.created_at 轉換為日期格式
+                  const createdDate = new Date(announcements.updated_at)
+                    .toLocaleDateString("zh-TW", {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                    })
+                    .replace(/\//g, "-"); // 將 / 替換為 -;
+
+                  return (
+                    <div key={index}>
+                      <h4 className="font-bold">
+                        {createdDate} 【{announcements.title}】
+                      </h4>
+                      <p className="mt-2">{announcements.content}</p>
+                    </div>
+                  );
+                })
+              ) : (
+                <p>尚無公告。</p>
+              )}
             </div>
           </div>
         </TabPanel>
@@ -161,8 +208,63 @@ function CourseMoreInfo({ courseId }) {
         {/* 評價 */}
         <TabPanel>
           <div className="p-5 px-40">
-            <h4 className="text-xl font-bold mb-4">評價</h4>
-            <p>這裡是評價區域，使用者可在此留下對課程的評價。</p>
+            {/* 檢查是否有有效的評價資料 */}
+            {course.reviews && course.reviews.length > 0 ? (
+              <>
+                {/* 計算平均分數 */}
+                <h4 className="text-xl font-bold mb-4">
+                  {`${(
+                    course.reviews
+                      .map((review) => Number(review.rating)) // 將所有的 rating 轉為數字
+                      .filter((rating) => !isNaN(rating)) // 過濾掉無效的數字
+                      .reduce((sum, rating) => sum + rating, 0) /
+                    course.reviews.filter(
+                      (review) => !isNaN(Number(review.rating))
+                    ).length
+                  ).toFixed(1)} / 5.0 星星 (${course.reviews.length} 則評價)`}
+                </h4>
+
+                {/* 評價卡片 */}
+                {course.reviews.map((review, index) => {
+                  // 將 review.created_at 轉換為日期格式，並將 / 替換為 -
+                  const createdDate = new Date(review.created_at)
+                    .toLocaleDateString("zh-TW", {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                    })
+                    .replace(/\//g, "-"); // 將 / 替換為 -
+
+                  return (
+                    <div
+                      key={index}
+                      className="border p-4 rounded-md shadow-md my-4"
+                    >
+                      <img
+                        src="/photo/person.png" // 如果有頭像資料，這裡可以動態替換為 `review.user.avatar`
+                        className="rounded-full w-14 h-14 mr-4 float-left"
+                        alt="評價者頭像"
+                      />
+                      <div className="overflow-hidden">
+                        <div className="flex justify-between">
+                          <span className="font-bold">{review.user.name}</span>
+                          <span className="text-gray-500 ml-2">
+                            {createdDate}
+                          </span>
+                        </div>
+                        <p className="font-bold">{`${Number(
+                          review.rating
+                        )} 星星`}</p>
+                        <h3 className="font-bold text-lg mt-2">評價標題</h3>
+                        <p className="mt-2">{review.comment || "無評論內容"}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </>
+            ) : (
+              <p>尚無評價。</p>
+            )}
           </div>
         </TabPanel>
       </Tabs>

@@ -9,13 +9,10 @@ function CourseInfo({ courseId }) {
 
   useEffect(() => {
     if (courseId) {
-      console.log(courseId);
-
       axios
         .get(`http://127.0.0.1:8000/api/courses/${courseId}`)
         .then((response) => {
-          console.log(response.data); // 檢查回應結構
-          console.log(response.data.id); // 檢查回應結構
+          // console.log(response.data); // 檢查回應結構
           setCourse(response.data); // 設置為物件
         })
         .catch((error) => {

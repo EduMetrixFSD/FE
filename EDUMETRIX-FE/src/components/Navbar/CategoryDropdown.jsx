@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; // 引入 Link
 import Button from "../button/Button.jsx";
 import BigCategoryButton from "../button/BigCategoryButton.jsx";
 
@@ -8,31 +9,31 @@ function CategoryDropdown() {
   let timeoutId;
 
   const categories = {
-    全部: [{ name: "所有課程", link: "/all-courses" }],
+    全部: [{ name: "所有課程", link: "/CourseCategorySearch" }],
     設計: [
-      { name: "平面設計", link: "/design/graphic" },
-      { name: "UI/UX設計", link: "/design/ui-ux" },
-      { name: "插畫", link: "/design/illustration" },
+      { name: "平面設計", link: "/CourseCategorySearch" },
+      { name: "UI/UX設計", link: "/CourseCategorySearch" },
+      { name: "插畫", link: "/CourseCategorySearch" },
     ],
     商業: [
-      { name: "行銷", link: "/business/marketing" },
-      { name: "管理", link: "/business/management" },
-      { name: "創業", link: "/business/entrepreneurship" },
+      { name: "行銷", link: "/CourseCategorySearch" },
+      { name: "管理", link: "/CourseCategorySearch" },
+      { name: "創業", link: "/CourseCategorySearch" },
     ],
     語言: [
-      { name: "英文", link: "/language/english" },
-      { name: "日文", link: "/language/japanese" },
-      { name: "韓文", link: "/language/korean" },
+      { name: "英文", link: "/CourseCategorySearch" },
+      { name: "日文", link: "/CourseCategorySearch" },
+      { name: "韓文", link: "/CourseCategorySearch" },
     ],
     科技: [
-      { name: "程式設計", link: "/tech/programming" },
-      { name: "數據分析", link: "/tech/data-analysis" },
-      { name: "網路安全", link: "/tech/cybersecurity" },
+      { name: "程式設計", link: "/CourseCategorySearch" },
+      { name: "數據分析", link: "/CourseCategorySearch" },
+      { name: "網路安全", link: "/CourseCategorySearch" },
     ],
     生活: [
-      { name: "烹飪", link: "/lifestyle/cooking" },
-      { name: "攝影", link: "/lifestyle/photography" },
-      { name: "健身", link: "/lifestyle/fitness" },
+      { name: "烹飪", link: "/CourseCategorySearch" },
+      { name: "攝影", link: "/CourseCategorySearch" },
+      { name: "健身", link: "/CourseCategorySearch" },
     ],
   };
 
@@ -71,11 +72,15 @@ function CategoryDropdown() {
           {/* 大類別 */}
           <div className="flex justify-center">
             {Object.keys(categories).map((category) => (
-              <BigCategoryButton
+              <Link
                 key={category}
-                label={<span>{category}</span>}
-                onMouseEnter={() => handleMouseEnterCategory(category)}
-              />
+                to={`/CourseCategorySearch?category=${category}`} // 傳遞大類別作為查詢參數
+              >
+                <BigCategoryButton
+                  label={<span>{category}</span>}
+                  onMouseEnter={() => handleMouseEnterCategory(category)}
+                />
+              </Link>
             ))}
           </div>
 

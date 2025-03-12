@@ -7,8 +7,6 @@ function Breadcrumb({ courseId }) {
 
   useEffect(() => {
     if (courseId) {
-      console.log(courseId);
-
       axios
         .get(`http://127.0.0.1:8000/api/courses/${courseId}`)
         .then((response) => {

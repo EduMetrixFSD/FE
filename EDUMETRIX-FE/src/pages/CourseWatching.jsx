@@ -47,7 +47,8 @@ function CourseWatching() {
       </nav>
       <div className="mx-40 my-8 flex flex-row gap-x-6">
         {/* 課程影片﹐公告、問題區 */}
-        <div className="basis-9/12 p-5">
+        <div className="basis-9/12 px-5">
+          <h3 className="text-2xl font-bold mb-2">課程標題</h3>
           <iframe
             className="w-full h-96"
             src="https://www.youtube.com/embed/1Kz2-OLx5n4?si=se_2o5WTu0QpwfjN"

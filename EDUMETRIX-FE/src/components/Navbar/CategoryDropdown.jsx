@@ -57,7 +57,12 @@ function CategoryDropdown() {
   return (
     <div>
       <Button
-        label="課程總覽"
+        label={
+          <div>
+            <span>課程總覽&ensp;</span>
+            <span className="bi bi-chevron-double-down"></span>
+          </div>
+        }
         className=""
         onMouseEnter={showPopover}
         onMouseLeave={hidePopover}

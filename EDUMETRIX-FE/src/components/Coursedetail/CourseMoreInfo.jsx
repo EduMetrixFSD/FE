@@ -32,7 +32,7 @@ function CourseMoreInfo({ courseId }) {
 
   // 如果資料尚未加載，顯示 loading
   if (!course) {
-    return <div>載入中...</div>;
+    return <div className="flex justify-center text-5xl h-dvh">載入中...</div>;
   }
 
   return (
@@ -88,6 +88,36 @@ function CourseMoreInfo({ courseId }) {
         {/* 章節 */}
         <TabPanel>
           <div className="p-5 px-40">
+            {/* 簡易詳細資訊 */}
+            <div className="flex justify-center m-5">
+              <div className="grid grid-cols-2 gap-4">
+                {/* 學員人數 */}
+                <div className="border w-28 h-28 rounded-lg flex flex-col items-center inline-block p-3 shadow">
+                  <span className="bi bi-person text-2xl"></span>
+                  <span>{course.enrollments_count}</span>
+                  <span>學員</span>
+                </div>
+                {/* 觀看期限 */}
+                <div className="border w-28 h-28 rounded-lg flex flex-col items-center inline-block p-3 shadow">
+                  <span className="bi bi-hourglass-split text-2xl"></span>
+                  <span>永久</span>
+                  <span>觀看</span>
+                </div>
+                {/* 課程時長 */}
+                <div className="border w-28 h-28 rounded-lg flex flex-col items-center inline-block p-3 shadow">
+                  <span className="bi bi-clock text-2xl"></span>
+                  <span>?小時</span>
+                  <span>?分鐘</span>
+                </div>
+                {/* 章節單元 */}
+                <div className="border w-28 h-28 rounded-lg flex flex-col items-center inline-block p-3 shadow">
+                  <span className="bi bi-journal text-2xl"></span>
+                  <span>?章</span>
+                  <span>?節</span>
+                </div>
+              </div>
+            </div>
+
             {/* 手風琴 */}
             <Accordion allowZeroExpanded>
               {course.chapters.map((chapter, chapterIndex) => (

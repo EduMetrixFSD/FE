@@ -13,10 +13,10 @@ function ShoppingCart() {
   };
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
 
-      <div className="mx-40 my-12 ">
+      <div className="mx-40 my-12 flex-grow">
         <div>
           <h1 className="text-2xl bi bi-cart-fill my-3">&ensp;購物車</h1>
         </div>
@@ -70,7 +70,7 @@ function ShoppingCart() {
       </div>
       <div className="m-40"></div>
       <Footer />
-    </>
+    </div>
   );
 }
 

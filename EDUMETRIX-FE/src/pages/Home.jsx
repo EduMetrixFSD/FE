@@ -83,7 +83,7 @@ function Home() {
     },
   ];
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
       <Carousel />
       {/* 暢銷課程*/}
@@ -130,7 +130,7 @@ function Home() {
       </div>
 
       <Footer />
-    </>
+    </div>
   );
 }
 

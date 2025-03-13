@@ -18,9 +18,9 @@ function MyCourse() {
   ];
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="mx-40 my-12">
+      <div className="mx-40 my-12 flex-grow">
         {/* 會員頭像、暱稱 */}
         <div className="flex my-3">
           <img src="../photo/person.png" className="w-12" />
@@ -97,7 +97,6 @@ function MyCourse() {
               </div>
             </TabPanel>
           </Tabs>
-          <div className="m-96"></div>
         </div>
       </div>
 

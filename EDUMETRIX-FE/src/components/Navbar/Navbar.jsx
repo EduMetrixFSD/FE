@@ -123,7 +123,7 @@ function Navbar() {
           </div>
         </div>
 
-        <div className="flex justify-between space-x-4">
+        <div className="flex justify-between items-center space-x-4">
           <CartButton />
           {isLoggedIn ? (
             <>

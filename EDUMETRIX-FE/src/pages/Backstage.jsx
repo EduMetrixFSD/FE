@@ -62,14 +62,14 @@ function Backstage() {
     },
   ];
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <Tabs>
         <div className="flex flex-row">
           {/* 側邊導覽列 */}
           <TabList className="w-64 flex flex-col flex-shrink-0 h-screen border text-lg py-6 bg-green-200">
-            <a className="text-3xl font-bold px-4 py-6 text-center" href="/">
+            <h1 className="text-3xl font-bold px-4 py-6 text-center">
               EDUMETRIX
-            </a>
+            </h1>
             <Tab
               className="px-4 py-4 cursor-pointer text-center"
               selectedClassName="bg-gray-200"
@@ -84,6 +84,13 @@ function Backstage() {
             >
               回復評論
             </Tab>
+            <p
+              className="px-4 py-4 cursor-pointer text-center"
+              selectedClassName="bg-gray-200"
+              style={{ outline: "none" }}
+            >
+              登出
+            </p>
           </TabList>
 
           {/* 內容 */}
@@ -120,7 +127,7 @@ function Backstage() {
           </div>
         </div>
       </Tabs>
-    </>
+    </div>
   );
 }
 

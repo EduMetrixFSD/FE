@@ -97,7 +97,7 @@ function PersonalPage({ setIsLoggedIn }) {
               &ensp;我的課程
             </a>
             <hr />
-            <a href="" className="my-2 bi bi-emoji-smile">
+            <a href="/personalpage" className="my-2 bi bi-emoji-smile">
               &ensp;個人檔案
             </a>
             <a href="/MyCourse" className="my-2 bi bi-heart">

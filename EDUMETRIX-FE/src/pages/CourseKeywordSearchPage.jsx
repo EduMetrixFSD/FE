@@ -31,21 +31,22 @@ function CourseKeywordSearchPage() {
   }, [keyword]);
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="mx-40">
+      <div className="mx-40 my-12 flex-grow">
+        {" "}
+        {/* 確保這裡的區域會伸展 */}
         <h2 className="text-4xl font-bold my-8 text-green-600">
           關鍵字「{keyword}」的結果（{courses.length} 筆相關資料）
         </h2>
         <hr />
         <p className="text-2xl font-bold my-8">相關課程</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 my-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 my-4 ">
           {/* 防止 courses 是 undefined */}
           {courses.length > 0 ? (
             courses.map((course, index) => (
-              <a href={`/coursedetail?id=${course.id}`}>
+              <a href={`/coursedetail?id=${course.id}`} key={index}>
                 <ClassCard
-                  key={index}
                   image={course.cover_image || "default_image.jpg"} // 根據資料確定圖片欄位
                   title={course.title || "無標題"}
                   teacher={course.teacher.name || "未知老師"}
@@ -53,8 +54,8 @@ function CourseKeywordSearchPage() {
                     course.reviews_avg_rating
                       ? parseFloat(course.reviews_avg_rating).toFixed(1)
                       : "N/A"
-                  } // 將評價轉為數字取到小數點後一位
-                  duration={course.duration ? course.duration : "N/A"} // 沒有這個資料
+                  }
+                  duration={course.duration ? course.duration : "N/A"}
                   people={course.enrollments_count || 0}
                   price={course.price ? parseInt(course.price, 10) : "未定價"}
                 />
@@ -67,7 +68,7 @@ function CourseKeywordSearchPage() {
         {error && <p className="text-red-500">{error}</p>}
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 

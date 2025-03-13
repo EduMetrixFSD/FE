@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 function Footer() {
   return (
-    <div className="bg-green-300 p-12 flex justify-evenly">
+    <div className="bg-green-300 p-12 flex justify-evenly items-center inline-block">
       <h1 className="text-5xl  font-bold">EDUMETRIX</h1>
       <div className="flex flex-col">
         <a href="#" className="m-1">

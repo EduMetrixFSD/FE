@@ -11,6 +11,7 @@ import ShoppingCart from "./pages/ShoppingCart.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import CourseWatching from "./pages/CourseWatching.jsx";
 import Backstage from "./pages/Backstage.jsx";
+import PersonalPage from "./pages/PersonalPage.jsx";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="/Checkout" element={<Checkout />} />
         <Route path="/CourseWatching" element={<CourseWatching />} />
         <Route path="/Backstage" element={<Backstage />} />
+        <Route path="/personalpage" element={<PersonalPage />} />
       </Routes>
     </Router>
   );

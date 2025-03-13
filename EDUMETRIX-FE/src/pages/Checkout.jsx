@@ -6,7 +6,7 @@ import Button from "../components/button/Button.jsx";
 
 function Checkout() {
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
       <div className="mx-40 my-12">
         <h1 className="text-3xl font-bold my-6">結帳</h1>
@@ -190,7 +190,7 @@ function Checkout() {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 
